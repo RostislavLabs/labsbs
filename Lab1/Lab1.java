@@ -1,4 +1,4 @@
-public class Lab1 {
+mkdir Lab1 public class Lab1 {
 
     public static void main(String[] args) {
 
