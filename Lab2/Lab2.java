@@ -21,7 +21,7 @@ public class Lab2 {
             System.out.println("11 - 4.2.7 Меню калькулятора");
             System.out.println("0 - Вихід");
 
-            int choice = sc.nextInt();
+            int choice = readInt("Виберіть пункт меню: ");
 
             switch (choice) {
                 case 1: quadraticEquation(); break;
@@ -44,14 +44,44 @@ public class Lab2 {
         }
     }
 
+    // ======= Методи =======
+
+    // Універсальна функція для введення числа з перевіркою
+    static int readInt(String prompt) {
+        int num;
+        while (true) {
+            System.out.print(prompt);
+            if (sc.hasNextInt()) {
+                num = sc.nextInt();
+                break;
+            } else {
+                System.out.println("Помилка! Введіть число. Повторіть спробу.");
+                sc.next(); // очищає неправильний ввід
+            }
+        }
+        return num;
+    }
+
+    static double readDouble(String prompt) {
+        double num;
+        while (true) {
+            System.out.print(prompt);
+            if (sc.hasNextDouble()) {
+                num = sc.nextDouble();
+                break;
+            } else {
+                System.out.println("Помилка! Введіть число. Повторіть спробу.");
+                sc.next();
+            }
+        }
+        return num;
+    }
+
     // 1. Квадратне рівняння
     static void quadraticEquation() {
-        System.out.print("Введіть a: ");
-        double a = sc.nextDouble();
-        System.out.print("Введіть b: ");
-        double b = sc.nextDouble();
-        System.out.print("Введіть c: ");
-        double c = sc.nextDouble();
+        double a = readDouble("Введіть a: ");
+        double b = readDouble("Введіть b: ");
+        double c = readDouble("Введіть c: ");
 
         double D = b*b - 4*a*c;
 
@@ -69,10 +99,8 @@ public class Lab2 {
 
     // 2. Квадрант
     static void quadrant() {
-        System.out.print("Введіть x: ");
-        double x = sc.nextDouble();
-        System.out.print("Введіть y: ");
-        double y = sc.nextDouble();
+        double x = readDouble("Введіть x: ");
+        double y = readDouble("Введіть y: ");
 
         if (x > 0 && y > 0) System.out.println("I квадрант");
         else if (x < 0 && y > 0) System.out.println("II квадрант");
@@ -83,54 +111,39 @@ public class Lab2 {
 
     // 3. Перевірка числа
     static void numberCheck() {
-        System.out.print("Введіть число: ");
-        int num = sc.nextInt();
-
+        int num = readInt("Введіть число: ");
         if (num >= 10 && num <= 99 && num % 2 == 0)
             System.out.println("Число двозначне і парне");
         else
             System.out.println("Число не є двозначним і парним");
     }
 
-    // 4.1 Варіант 19
+    // 4. Функція f(x) (варіант 19)
     static void function19() {
-        System.out.print("Введіть x: ");
-        double x = sc.nextDouble();
+        double x = readDouble("Введіть x: ");
         double f;
-
         if (x < 0)
             f = x*x + 2*x + 1;
         else if (x == 0)
             f = 0;
         else
             f = Math.sqrt(x);
-
         System.out.println("f(x) = " + f);
     }
 
     // 4.2.1 День тижня
     static void dayType() {
-        System.out.print("Введіть номер дня (1-7): ");
-        int day = sc.nextInt();
-
+        int day = readInt("Введіть номер дня (1-7): ");
         switch (day) {
-            case 6:
-            case 7:
-                System.out.println("Вихідний");
-                break;
-            case 1: case 2: case 3: case 4: case 5:
-                System.out.println("Робочий");
-                break;
-            default:
-                System.out.println("Невірний номер");
+            case 6: case 7: System.out.println("Вихідний"); break;
+            case 1: case 2: case 3: case 4: case 5: System.out.println("Робочий"); break;
+            default: System.out.println("Невірний номер");
         }
     }
 
     // 4.2.2 Пора року
     static void season() {
-        System.out.print("Введіть місяць (1-12): ");
-        int month = sc.nextInt();
-
+        int month = readInt("Введіть місяць (1-12): ");
         switch (month) {
             case 12: case 1: case 2: System.out.println("Зима"); break;
             case 3: case 4: case 5: System.out.println("Весна"); break;
@@ -142,29 +155,18 @@ public class Lab2 {
 
     // 4.2.3 Дні в місяці
     static void daysInMonth() {
-        System.out.print("Введіть місяць (1-12): ");
-        int month = sc.nextInt();
-
+        int month = readInt("Введіть місяць (1-12): ");
         switch (month) {
-            case 1: case 3: case 5: case 7:
-            case 8: case 10: case 12:
-                System.out.println("31 день"); break;
-            case 4: case 6: case 9: case 11:
-                System.out.println("30 днів"); break;
-            case 2:
-                System.out.println("28 або 29 днів"); break;
-            default:
-                System.out.println("Невірний місяць");
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12: System.out.println("31 день"); break;
+            case 4: case 6: case 9: case 11: System.out.println("30 днів"); break;
+            case 2: System.out.println("28 або 29 днів"); break;
+            default: System.out.println("Невірний місяць");
         }
     }
 
-    // 4.2.4 Меню
+    // 4.2.4 Текстове меню
     static void menuText() {
-        System.out.println("1 - Привітання");
-        System.out.println("2 - Запрошення");
-        System.out.println("3 - Завершити");
-        int c = sc.nextInt();
-
+        int c = readInt("Введіть пункт меню: ");
         switch (c) {
             case 1: System.out.println("Вітаю!"); break;
             case 2: System.out.println("Запрошуємо до роботи!"); break;
@@ -175,9 +177,7 @@ public class Lab2 {
 
     // 4.2.5 Предмет
     static void lesson() {
-        System.out.print("Номер пари (1-4): ");
-        int l = sc.nextInt();
-
+        int l = readInt("Номер пари (1-4): ");
         switch (l) {
             case 1: System.out.println("Математика"); break;
             case 2: System.out.println("Програмування"); break;
@@ -189,9 +189,7 @@ public class Lab2 {
 
     // 4.2.6 Чверть години
     static void quarterHour() {
-        System.out.print("Хвилини (0-59): ");
-        int min = sc.nextInt();
-
+        int min = readInt("Хвилини (0-59): ");
         switch (min / 15) {
             case 0: System.out.println("Перша чверть"); break;
             case 1: System.out.println("Друга чверть"); break;
@@ -201,18 +199,11 @@ public class Lab2 {
         }
     }
 
-    // 4.2.7 Калькулятор
+    // 4.2.7 Меню калькулятора
     static void calculatorMenu() {
-        System.out.println("1 - Добуток");
-        System.out.println("2 - Сума");
-        System.out.println("3 - Різниця");
-        int c = sc.nextInt();
-
-        System.out.print("Перше число: ");
-        double a = sc.nextDouble();
-        System.out.print("Друге число: ");
-        double b = sc.nextDouble();
-
+        int c = readInt("Виберіть операцію (1-Добуток, 2-Сума, 3-Різниця): ");
+        double a = readDouble("Перше число: ");
+        double b = readDouble("Друге число: ");
         switch (c) {
             case 1: System.out.println("Добуток = " + (a*b)); break;
             case 2: System.out.println("Сума = " + (a+b)); break;
@@ -220,4 +211,5 @@ public class Lab2 {
             default: System.out.println("Невірний вибір");
         }
     }
+
 }
