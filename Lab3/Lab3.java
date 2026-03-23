@@ -16,7 +16,25 @@ public class Lab3 {
         task5_while();
     }
 
-    // 1. Вивести фразу 50 разів (for і while)
+    // ФУНКЦІЯ ПЕРЕВІРКИ ВВОДУ (ТІЛЬКИ ЦІЛІ ЧИСЛА)
+    static int getStrictInt(String message) {
+        while (true) {
+            System.out.print(message);
+
+            if (sc.hasNext()) {
+                String input = sc.next();
+
+                try {
+                    int value = Integer.parseInt(input);
+                    return value;
+                } catch (NumberFormatException e) {
+                    System.out.println("Введіть ЦІЛЕ число");
+                }
+            }
+        }
+    }
+
+    // 1
     static void task1() {
 
         System.out.println("\n--- Завдання 1 (for) ---");
@@ -32,7 +50,7 @@ public class Lab3 {
         }
     }
 
-    // 2. Години і хвилини (for)
+    // 2
     static void task2() {
 
         System.out.println("\n--- Завдання 2 (for) ---");
@@ -44,7 +62,7 @@ public class Lab3 {
         }
     }
 
-    // 3. Години і хвилини (while)
+    // 3
     static void task3() {
 
         System.out.println("\n--- Завдання 3 (while) ---");
@@ -60,7 +78,7 @@ public class Lab3 {
         }
     }
 
-    // 4. Години, хвилини, секунди
+    // 4
     static void task4() {
 
         System.out.println("\n--- Завдання 4 ---");
@@ -74,7 +92,7 @@ public class Lab3 {
         }
     }
 
-    // 5. Табулювання функції (for)
+    // 5 (for)
     static void task5_for() {
 
         System.out.println("\n--- Завдання 5 (for) ---");
@@ -83,11 +101,14 @@ public class Lab3 {
         double b = 2;
         double step = 0.2;
 
-        System.out.print("Введіть нижню межу діапазону значень функції: ");
-        double min = sc.nextDouble();
+        int min = getStrictInt("Введіть нижню межу діапазону значень функції: ");
+        int max = getStrictInt("Введіть верхню межу діапазону значень функції: ");
 
-        System.out.print("Введіть верхню межу діапазону значень функції: ");
-        double max = sc.nextDouble();
+        // перевірка діапазону
+        while (max < min) {
+            System.out.println("❌ Верхня межа має бути більшою за нижню!");
+            max = getStrictInt("Введіть верхню межу ще раз: ");
+        }
 
         int count = 0;
 
@@ -108,7 +129,7 @@ public class Lab3 {
             System.out.println("Значення функції в цьому діапазоні відсутні.");
     }
 
-    // 5. Табулювання функції (while)
+    // 5 (while)
     static void task5_while() {
 
         System.out.println("\n--- Завдання 5 (while) ---");
@@ -117,11 +138,13 @@ public class Lab3 {
         double b = 2;
         double step = 0.2;
 
-        System.out.print("Введіть нижню межу діапазону значень функції: ");
-        double min = sc.nextDouble();
+        int min = getStrictInt("Введіть нижню межу діапазону значень функції: ");
+        int max = getStrictInt("Введіть верхню межу діапазону значень функції: ");
 
-        System.out.print("Введіть верхню межу діапазону значень функції: ");
-        double max = sc.nextDouble();
+        while (max < min) {
+            System.out.println("❌ Верхня межа має бути більшою за нижню!");
+            max = getStrictInt("Введіть верхню межу ще раз: ");
+        }
 
         int count = 0;
         double x = a;
