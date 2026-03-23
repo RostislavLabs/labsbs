@@ -47,20 +47,23 @@ public class Lab2 {
     // ======= Методи =======
 
     // Універсальна функція для введення числа з перевіркою
-    static int readInt(String prompt) {
-        int num;
-        while (true) {
-            System.out.print(prompt);
-            if (sc.hasNextInt()) {
-                num = sc.nextInt();
-                break;
-            } else {
-                System.out.println("Помилка! Введіть число. Повторіть спробу.");
-                sc.next(); // очищає неправильний ввід
-            }
+static int readInt(String prompt) {
+    while (true) {
+        System.out.print(prompt);
+
+        if (sc.hasNextInt()) {
+            return sc.nextInt();
+        } 
+        else if (sc.hasNextDouble()) {
+            System.out.println("Помилка! Введіть ЦІЛЕ число.");
+            sc.next(); // зчитуємо 2.2 і очищаємо
+        } 
+        else {
+            System.out.println("Помилка! Введіть число.");
+            sc.next(); // зчитуємо сміття (наприклад abc)2
         }
-        return num;
     }
+}
 
     static double readDouble(String prompt) {
         double num;
