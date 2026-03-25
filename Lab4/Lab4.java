@@ -66,21 +66,43 @@ public class Lab4 {
         }
 
         // -------------------------------
-        // 3. Сума елементів масиву
+        // 3. Сума елементів масиву (З TRY-CATCH)
         // -------------------------------
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n\nВведіть кількість елементів масиву:");
-        int n = scanner.nextInt();
+        int n;
+
+        while (true) {
+            System.out.println("\n\nВведіть кількість елементів масиву:");
+            try {
+                n = scanner.nextInt();
+                if (n <= 0) {
+                    System.out.println("Кількість має бути більше 0!");
+                    continue;
+                }
+                break;
+            } catch (Exception e) {
+                System.out.println("Помилка! Введіть ціле число.");
+                scanner.next(); // очищає неправильний ввід
+            }
+        }
 
         double[] numbers = new double[n];
         double sum = 0;
 
         for (int j = 0; j < n; j++) {
-            System.out.print("Введіть елемент " + j + ": ");
-            numbers[j] = scanner.nextDouble();
-            sum += numbers[j];
+            while (true) {
+                System.out.print("Введіть елемент " + j + ": ");
+                try {
+                    numbers[j] = scanner.nextDouble();
+                    sum += numbers[j];
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Помилка! Введіть число.");
+                    scanner.next(); // очищає неправильний ввід
+                }
+            }
         }
 
         System.out.println("Сума елементів масиву = " + sum);
