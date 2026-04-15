@@ -1,11 +1,12 @@
 public class Main {
     public static void main(String[] args) {
 
-        ArrayTasks.task1();
-        ArrayTasks.task2();
+        Task1_EvenOdd.task1();
 
-        SumTask.task3();
+        Task2_ArrayWork.task2();
 
-        SignChange.task4();
+        Task3_SumInput.task3();
+
+        Task4_SignChange.task4();
     }
 }
