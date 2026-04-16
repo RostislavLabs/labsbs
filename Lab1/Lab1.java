@@ -152,3 +152,4 @@ class Car {
         this.automatic=automatic;
     }
 }
+//======Кінець======
