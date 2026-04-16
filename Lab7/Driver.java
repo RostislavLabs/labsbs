@@ -1,5 +1,4 @@
 public class Driver {
-
     String name;
     int age;
     int experience;
@@ -10,4 +9,13 @@ public class Driver {
         this.experience = experience;
     }
 
+    public void improveSkill() {
+        experience++;
+    }
+
+    @Override
+    public String toString() {
+        return name + " | Вік: " + age +
+               " | Стаж: " + experience;
+    }
 }
