@@ -1,4 +1,4 @@
-mkdir Lab1 public class Lab1 {
+public class Lab1 {
 
     public static void main(String[] args) {
 
@@ -143,7 +143,7 @@ class Car {
     public Car(int power,double engine,String brand,String color,
                int year,String fuel,double price,boolean automatic){
         this.power=power;
-        this.engine=engine;
+        this.engine=engine; 
         this.brand=brand;
         this.color=color;
         this.year=year;
