@@ -10,14 +10,23 @@ public class Task1_EvenOdd {
             odd[i] = i * 2 + 1;
         }
 
-        System.out.println("50 парних чисел:");
-        for (int i = 0; i < even.length; i++) {
-            System.out.print(even[i] + " ");
+        // створюємо нові масиви без 49-го елемента (індекс 49)
+        int[] evenNew = new int[49];
+        int[] oddNew = new int[49];
+
+        for (int i = 0; i < 49; i++) {
+            evenNew[i] = even[i];
+            oddNew[i] = odd[i];
         }
 
-        System.out.println("\n\n50 непарних чисел:");
-        for (int i = 0; i < odd.length; i++) {
-            System.out.print(odd[i] + " ");
+        System.out.println("49 парних чисел:");
+        for (int i = 0; i < evenNew.length; i++) {
+            System.out.print(evenNew[i] + " ");
+        }
+
+        System.out.println("\n\n49 непарних чисел:");
+        for (int i = 0; i < oddNew.length; i++) {
+            System.out.print(oddNew[i] + " ");
         }
 
         System.out.println();
