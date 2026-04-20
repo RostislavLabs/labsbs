@@ -10,11 +10,11 @@ public class Main {
         System.out.println("Найменше число: " + min);
 
         // 3
-        int[] numbers = {3, 7, 1, 9, 4};
-        Task3_ArrayPrint.printArray(numbers);
+        int[] arr = {1, 2, 3, 4, 5};
+        System.out.println(Task3_ArrayPrint.printArray(arr));
 
         // 4
-        int max = Task4_ArrayMax.maxInArray(numbers);
+        int max = Task4_ArrayMax.maxInArray(arr);
         System.out.println("Найбільше число: " + max);
     }
 }
